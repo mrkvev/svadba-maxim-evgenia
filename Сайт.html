@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Максим + Евгения | Приглашение на свадьбу 18.07.2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@400;700&family=Inter:wght@400;500&display=swap');
+        /* ========== Kindentosca – рукописный шрифт для имён ========== */
+        @font-face {
+            font-family: 'Kindentosca';
+            src: url('Kindentosca.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'HandsetCond';
+            src: url('HandsetCond.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;            
+        }
+
+        .name-script {
+            font-family: 'Kindentosca', 'Playfair Display', serif;
+            font-weight: normal;
+        }
+        .font-kaligr {
+            font-family: 'HandsetCond', 'Playfair Display', serif;
+            font-weight: normal;
+        }
+
+        :root {
+            --tw-color-emerald: #4a7043;
+        }
+
+        body {
+            /* Задает шрифт для всего тела */
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .title-font {
+            /* Шрифт для заголовков */
+            font-family: 'Playfair Display', serif;
+        }
+
+        /*ХОЧУ УДАЛИТЬ*/
+        .hero-bg {
+            /* Задаёт красивый светло-зелёный градиент для первой секции (героя). 
+                to bottom — градиент идёт сверху вниз. */
+            background: linear-gradient(#ffffff);
+        }
+
+        .section {
+            scroll-margin-top: 80px;
+        }
+
+        /*Добавляет плавную анимацию (0.3 секунды) для элементов таймера.
+            При изменении цифр (каждую секунду) они будут меняться плавно.*/
+        .countdown-item {
+            transition: all 0.3s ease;
+        }
+        /*Стили для контейнера с Яндекс.Картой:*/
+        .map-container {
+            border-radius: 20px; /*Закругляет углы (20px)*/
+            overflow: hidden; /*Скрывает всё, что выходит за пределы*/
+            box-shadow: 0 25px 50px -12px rgb(74 112 67 / 0.25); /*Добавляет красивую мягкую тень зелёного цвета.*/
+        }
+        .right-text {
+            text-align: right;
+        }
+        .element8 {
+            margin: auto;
+            width: 79%;
+            height: 86%;
+            top: 7%;
+            position: relative;
+            height: auto !important;
+            padding: 30px;
+            max-width: 550px;
+        }
+        .element7 {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 70px 0 !important;
+        }
+        .block#myinv {
+            height: auto;
+        }
+        .moveBox {
+            position: relative;
+            margin: auto;
+            height: 10%;
+            transition: all .5s ease-out 0s;
+        }
+        .textLine {
+            top: 0;
+            clear: both;
+            bottom: 0;
+            left: 0;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0);
+            pointer-events: none;
+            padding: 15px 0;
+        }
+        .element6 {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }        
+        .plate-box {
+            margin: auto;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-repeat: no-repeat;
+        }
+        
+        .element_txt {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+        }
+        .texts {
+            top: 40%;
+            width: 100%;
+            height: 60%;
+            position: relative;
+        }
+        .window#mymain {
+            margin: auto;
+            height: 90vh;
+            max-height: 875px;
+        }
+        @media (max-width: 992px) {
+            .block#mymain {
+                min-height: 750px;
+            }
+        }
+        #screen .block {
+            width: 100%;
+            height: 700px;
+        }
+        .sheet, .window, [elemplace=bgback], [elemplace=bgcolor] {
+            transition: all .5s ease-out 0s;
+        }
+        .element1 {
+            margin: auto;
+            top: 10%;
+            position: relative;
+            width: 90%;
+            height: 72%;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-size: contain;
+            background-position: 50%;
+        }
+
+        .plate_box {
+            margin: auto;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-repeat: no-repeat;
+        }
+        .block {
+            width: 100%;
+            height: 700px;
+        }
+        .mymenu {
+            height: 60px;
+            z-index: 10;
+            position: fixed;
+            background: rgba(17, 17, 17, .45);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            backdrop-filter: blur(14px) saturate(140%);
+            width: 100%;
+        }
+        .subTextLine {
+            border: 2px solid rgba(255, 255, 255, 0);
+            overflow-wrap: normal !important;
+            word-break: normal !important;
+        }
+        .mynav {
+            float: left;
+            padding: 13px;
+            height: 60px;
+            font-size: 13.7pt;
+            color: #fff;
+            text-decoration: none;
+        }
+        </style>
+</head>
+<body class="bg-[#f8f9f5] text-[#3b4842]">
+    <div class="block mymenu name-script" elenplace="dgmenu" id="menu" module="menu" style="background: rgba(255,255,255,0.56);">
+        <a action="menutext" class="subTextLine mynav hidden-xs" href="#myinv" style="color: rgb(132, 137, 117); font-size: 13.7032pt; letter-spacing: 0.1em;"
+           ><invitation>Приглашение</invitation>
+        </a>
+    </div>
+
+
+
+
+    <div class="window block" elemplace="bgcolor" id="mymain" module="mymain" style="background: rgb(255,255,255); position: relative;">
+        <div class="element6" elemplace="bgpattern">
+            <div class="plate-box">
+                <div actions="plate" class="element1" elemplace="plate" style="background-image: url(upl5199.png); transform:scale(1.3) rotate(315deg); left:38.5863%; top:-5.5%;" optstyle="upl6199.png">
+                </div>
+            </div>
+            <div class="element_txt">
+                <div class="texts textBox" textplace="front_text">
+                    <div class="moveBox" style="left: 32.9301%; top:-19%;" delete="deleted" type></div>
+                    <div class="moveBox" style="left: 42.25%; top:-4.75%;" delete="deleted" type></div>
+                    <div class="moveBox" style="left: 33.9741%; top:-7.25%;" delete="deleted" type></div>
+                    <div class="moveBox" style="left: 36.3211%; top:11%;" delete="deleted" type></div>
+                    <div class="moveBox" style="left: 47.6732%; top:-15%;" delete="deleted" type></div>
+
+                    <div class="moveBox" style="left: 20.7844%; top: -32.5%;">
+                        <div class="textLine name-script text-[#848975]" contenteditable="true" action="text5" style="font-size: 42.8226pt; line-height:inherit; letter-spacing: 0em; text-align:left; margin-left: -20px; margin-right:-20px;">Максим</div>
+                    </div>
+
+                    <div class="moveBox" style="left: 25.0689%; top: -52.25%;" type="text">
+                        <div class="textLine font-kaligr" contenteditable="true" action="text6" style="font-size: 10.2774pt; line-height:1.25em; letter-spacing:0.2em; text-align:left; margin-left:-10px; margin-right:-10px;">
+                            ПРИГЛАШАЕМ<br>НА НАШУ СВАДЬБУ
+                        </div>
+                    </div>
+
+                    <div style="top: -12.25%; left: 33.5553%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -31.25%; left: 25.3189%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -52%; left: 33.7818%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -50.75%; left: 36.061%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -66.25%; left: 25.1708%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -76.5%; left: 44.8664%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -88.5%; left: 43.1021%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -93.25%; left: 43.1021%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -108.25%; left: 25.6021%;" type class="moveBox" delete="deleted"></div>
+                    <div style="top: -108.5%; left: 25.6021%;" type class="moveBox" delete="deleted"></div>
+                    <div class="moveBox" style="left: 33.9741%; top: -110%;" delete="deleted" type=""></div>
+                    <div style="top: -108.25%; left: 23.3189%;" type="" class="moveBox" delete="deleted"></div>
+
+
+                    <div class="moveBox" style="left: 26.2241%; top: -176.75%;">
+                        <div class="textLine name-script text-[#848975]" contenteditable="true" action="text9" style="font-size: 42.8226pt; line-height: inherit; letter-spacing: 0em; text-align: left; margin-left: -50px; margin-right: -50px;">Евгения<br></div>
+                    </div>
+
+                    <div style="top: -162.25%; left: 29.9619%;" type="text" class="moveBox">
+                        <div contenteditable="true" spellcheck="false" style="font-size: 10.2774pt; line-height: 1.25em; letter-spacing: 0.2em; text-align: right; margin-left: 200px; margin-right: 200px;" class="textLine font-kaligr" action="text10">18 июля<br>2026 </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="moveBox" style="left: 25.9741%; top: -204.75%;">
+                        <div class="textLine name-script text-[#848975]" contenteditable="true" action="text11" style="font-size: 51.3871pt; line-height: inherit; letter-spacing: 0em; text-align: left; margin-left: 50px; margin-right: 50px;">+</div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="block" elemplace="bgback" id="myinv" module="myinv" style="background: rgb(255,255,255);">
+        <!-- Второй блок — приветствие -->
+        <div class="element7" elemplace="bgbackpattern" style="background-image: url(upl5206.png);background-size:428px;">
+            <!-- element8 — листики на 3 блока -->
+            <div class="element8" style="background: rgba(255,255,255,0.86); border-radius:0px; margin-bottom: -276.3px;">
+                <div class="element5 textBox" textplace="back_text">
+
+                    <div class="moveBox" style="left: 1%; top: -15%;">
+                        <div class="textLine name-script" style="font-size: 35.5452pt; text-align: center; line-height: 1em;">Алексей и Алена!</div>
+                    </div>
+                    <div class="moveBox" style="left: 0%; top: 13%;">
+                        <div class="textLine font-kaligr" style="font-size: 11.1139pt; text-align: center;">
+                            Мы рады сообщить Вам, что 18.07.2026<br>состоится самое главное торжество<br>в нашей жизни — день нашей свадьбы!<br><br>
+                            Приглашаем Вас разделить с нами радость<br>этого незабываемого дня.
+                        </div>
+                    </div>
+                    <div class="moveBox" style="left: 0%; top: -7%">
+                        <div class="textLine bg-[#a3d9c4] text-emerald-900 font-medium px-8 py-4 rounded-3xl text-2xl">
+                            18.07.2026 в 10:00
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!-- Третий блок — Примечание -->
+                    <section id="note" class="max-w-5xl mx-auto px-6 py-20 bg-white rounded-3xl mx-4 md:mx-auto shadow-xl relative">
+                        <div class="max-w-2xl mx-auto text-center space-y-12">
+                            <div>
+                                <h2 class="title-font text-4xl text-emerald-800 mb-6">Примечание</h2>
+                                <p class="text-lg leading-relaxed text-emerald-700">
+                                    Будем благодарны, если вы воздержитесь от криков «Горько» на празднике, ведь поцелуй — это знак выражения чувств, он не может быть по заказу.
+                                </p>
+                            </div>
+
+                            <div class="h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent"></div>
+
+                            <div>
+                                <h3 class="title-font text-3xl mb-4">Подтверждение</h3>
+                                <p class="text-emerald-700">Пожалуйста, подтвердите своё присутствие до <span class="font-semibold">01.01.2025</span></p>
+                            </div>
+
+                            <div>
+                                <h3 class="title-font text-3xl mb-4">Фото</h3>
+                                <p class="text-emerald-700">Опубликуйте фото дня нашей свадьбы в соцсетях с хештегом <span class="font-medium bg-emerald-100 px-3 py-1 rounded-2xl">#МаксимЕвгения2026</span></p>
+                            </div>
+
+                            <div>
+                                <h3 class="title-font text-3xl mb-6">Ждём Вас!</h3>
+                                <p class="text-emerald-700 mb-8">Будем благодарны, если при выборе нарядов на наше торжество вы придержитесь следующей палитры</p>
+                                <!-- Палитра цветов -->
+                                <div class="flex justify-center gap-4">
+                                    <div class="w-10 h-10 rounded-2xl bg-[#e8d5c4] shadow-inner"></div>
+                                    <div class="w-10 h-10 rounded-2xl bg-[#d4c3b0] shadow-inner"></div>
+                                    <div class="w-10 h-10 rounded-2xl bg-[#c4b8a8] shadow-inner"></div>
+                                    <div class="w-10 h-10 rounded-2xl bg-[#b8a99a] shadow-inner"></div>
+                                    <div class="w-10 h-10 rounded-2xl bg-[#a89b8c] shadow-inner"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+                <!-- Четвертый блок — Анкета (как на третьем фото) -->
+                <section id="rsvp" class="max-w-5xl mx-auto px-6 py-20">
+                    <div class="bg-emerald-50 rounded-3xl p-10 md:p-16">
+                        <div class="max-w-2xl mx-auto">
+                            <h2 class="text-4xl title-font text-center mb-10">Пожалуйста, ответьте на вопросы,<br>которые для вас подготовили <span class="text-emerald-700">Жених и Невеста</span>:</h2>
+
+                            <form id="rsvp-form" class="space-y-12">
+                                <!-- Имя гостя (автозаполняется из URL) -->
+                                <div>
+                                    <label class="block text-emerald-700 text-sm mb-3 font-medium">Ваше имя / фамилия</label>
+                                    <input id="guest-name" type="text"
+                                           class="w-full px-6 py-5 bg-white border border-emerald-200 rounded-3xl text-lg focus:outline-none focus:border-emerald-400 transition-colors"
+                                           placeholder="Введите ваше имя">
+                                </div>
+
+                                <!-- Трансфер -->
+                                <div>
+                                    <p class="text-emerald-700 mb-4 font-medium">Потребуется ли вам трансфер?</p>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                        <label class="flex items-center gap-3 bg-white px-6 py-5 rounded-3xl cursor-pointer hover:shadow transition-all">
+                                            <input type="radio" name="transfer" value="Нет" class="accent-emerald-700">
+                                            <span class="text-lg">Нет</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 bg-white px-6 py-5 rounded-3xl cursor-pointer hover:shadow transition-all">
+                                            <input type="radio" name="transfer" value="Только до торжества" class="accent-emerald-700">
+                                            <span class="text-lg">Только до торжества</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 bg-white px-6 py-5 rounded-3xl cursor-pointer hover:shadow transition-all">
+                                            <input type="radio" name="transfer" value="Только после торжества" class="accent-emerald-700">
+                                            <span class="text-lg">Только после торжества</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 bg-white px-6 py-5 rounded-3xl cursor-pointer hover:shadow transition-all">
+                                            <input type="radio" name="transfer" value="До и после торжества" class="accent-emerald-700">
+                                            <span class="text-lg">До и после торжества</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Алкоголь (по вашему запросу) -->
+                                <div>
+                                    <p class="text-emerald-700 mb-4 font-medium">Что вы предпочитаете из алкоголя?</p>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                        <label class="flex items-center gap-3 bg-white px-6 py-5 rounded-3xl cursor-pointer hover:shadow transition-all">
+                                            <input type="radio" name="alcohol" value="Вино" class="accent-emerald-700">
+                                            <span class="text-lg">Вино</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 bg-white px-6 py-5 rounded-3xl cursor-pointer hover:shadow transition-all">
+                                            <input type="radio" name="alcohol" value="Шампанское" class="accent-emerald-700">
+                                            <span class="text-lg">Шампанское</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 bg-white px-6 py-5 rounded-3xl cursor-pointer hover:shadow transition-all">
+                                            <input type="radio" name="alcohol" value="Коньяк" class="accent-emerald-700">
+                                            <span class="text-lg">Коньяк</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Кнопка подтверждения -->
+                                <button type="submit"
+                                        class="w-full py-7 bg-emerald-700 hover:bg-emerald-800 text-white text-xl font-medium rounded-3xl flex items-center justify-center gap-3 transition-all active:scale-[0.97]">
+                                    <span>Подтвердить присутствие</span>
+                                    <span class="text-3xl">✓</span>
+                                </button>
+
+                                <p class="text-center text-xs text-emerald-600">Ваши ответы придут мне на почту мгновенно. Спасибо!</p>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Карта Яндекс в конце -->
+    <section id="map" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="bg-white rounded-3xl p-6 md:p-10">
+            <h2 class="text-4xl title-font text-center mb-8 text-emerald-800">Место проведения банкета</h2>
+            <p class="text-center text-emerald-600 mb-8">Подмосковье • Точный адрес: <span id="place-address" class="font-medium">ЗАМЕНИТЕ НА ВАШ АДРЕС</span></p>
+
+            <div id="yandex-map" class="map-container h-[500px] w-full"></div>
+
+            <div class="text-xs text-emerald-500 text-center mt-6">
+                Карту можно двигать, приближать и смотреть маршрут. Яндекс.Карты
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-emerald-900 text-white py-12 text-center">
+        <div class="max-w-5xl mx-auto px-6">
+            <p class="text-emerald-200">Сайт-приглашение создано специально для вас ❤️</p>
+            <p class="text-xs mt-4 opacity-60">Максим + Евгения • 18 июля 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== НАСТРОЙКИ ====================
+
+        // 1. Дата свадьбы (10:00 по Москве / EEST)
+        const WEDDING_DATE = new Date('2026-07-18T10:00:00+03:00');
+
+        // 2. Для EmailJS (обязательно заполните!)
+        //    1. Зарегистрируйтесь на https://www.emailjs.com
+        //    2. Создайте сервис (Gmail)
+        //    3. Создайте шаблон с полями: guest, transfer, alcohol
+        //    4. Вставьте сюда ваши ID:
+        const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';   // ← Заменить
+        const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';   // ← Заменить
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // ← Заменить
+
+        // 3. Яндекс.Карты — получите бесплатный ключ на https://yandex.ru/dev/maps/jsapi/
+        const YANDEX_API_KEY = 'YOUR_YANDEX_API_KEY';  // ← Заменить
+
+        // 4. Координаты места проведения банкета (замените!)
+        //    Пример: Подмосковье, озеро (можно найти точные координаты в Яндекс.Картах)
+        const BANQUET_LAT = 55.6825;   // ← Заменить
+        const BANQUET_LNG = 37.3124;   // ← Заменить
+        const BANQUET_ADDRESS = 'Подмосковье, ваш точный адрес'; // ← Заменить
+
+        // ==================================================
+
+        // Инициализация Tailwind
+        function initTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: {
+                    extend: {}
+                }
+            }
+        }
+
+        // Таймер обратного отсчёта
+        function startCountdown() {
+            const weeksEl = document.getElementById('weeks');
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            function update() {
+                const now = new Date().getTime();
+                let diff = WEDDING_DATE.getTime() - now;
+
+                if (diff < 0) {
+                    weeksEl.textContent = '0';
+                    daysEl.textContent = '0';
+                    hoursEl.textContent = '0';
+                    minutesEl.textContent = '0';
+                    secondsEl.textContent = '0';
+                    return;
+                }
+
+                const weeks = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+                diff %= (1000 * 60 * 60 * 24 * 7);
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                diff %= (1000 * 60 * 60 * 24);
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                diff %= (1000 * 60 * 60);
+
+                const minutes = Math.floor(diff / (1000 * 60));
+                diff %= (1000 * 60);
+
+                const seconds = Math.floor(diff / 1000);
+
+                weeksEl.textContent = String(weeks).padStart(2, '0');
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+
+            setInterval(update, 1000);
+            update();
+        }
+
+        // Персонализация по URL-параметру ?guest=Фамилия
+        function personalizeGuest() {
+            const params = new URLSearchParams(window.location.search);
+            let guest = params.get('guest') || '';
+
+            if (guest) {
+                // Декодируем пробелы и +
+                guest = decodeURIComponent(guest.replace(/\+/g, ' '));
+                document.getElementById('greeting-title').innerHTML = `Дорогой<br>${guest}!`;
+
+                // Автозаполняем поле в форме
+                const nameInput = document.getElementById('guest-name');
+                if (nameInput) nameInput.value = guest;
+            }
+        }
+
+        // Яндекс.Карта
+        function initYandexMap() {
+            if (!YANDEX_API_KEY || YANDEX_API_KEY === 'YOUR_YANDEX_API_KEY') {
+                console.warn('⚠️ Замените YANDEX_API_KEY на реальный ключ');
+                document.getElementById('yandex-map').innerHTML = `
+                                                                        <div class="h-full flex items-center justify-center bg-emerald-50 rounded-3xl text-emerald-700">
+                                                                            <div class="text-center">
+                                                                                <p class="text-xl mb-2">📍 Карта Яндекс</p>
+                                                                                <p class="text-sm">Вставьте ваш API-ключ Яндекс.Карт в код</p>
+                                                                                <p class="text-xs mt-6">${BANQUET_ADDRESS}</p>
+                                                                            </div>
+                                                                        </div>`;
+                return;
+            }
+
+            const script = document.createElement('script');
+            script.src = `https://api-maps.yandex.ru/2.1/?apikey=${YANDEX_API_KEY}&lang=ru_RU`;
+            script.type = 'text/javascript';
+            script.onload = () => {
+                ymaps.ready(() => {
+                    const map = new ymaps.Map('yandex-map', {
+                        center: [BANQUET_LAT, BANQUET_LNG],
+                        zoom: 15,
+                        controls: ['zoomControl', 'fullscreenControl', 'rulerControl']
+                    });
+
+                    const placemark = new ymaps.Placemark([BANQUET_LAT, BANQUET_LNG], {
+                        hintContent: BANQUET_ADDRESS,
+                        balloonContent: `<strong>Банкет</strong><br>${BANQUET_ADDRESS}<br>18 июля 2026 в 10:00`
+                    }, {
+                        preset: 'islands#greenDotIcon'
+                    });
+
+                    map.geoObjects.add(placemark);
+                });
+            };
+            document.head.appendChild(script);
+        }
+
+        // Добавление события в календарь
+        function addToCalendar() {
+            const startDate = '20260718T100000';
+            const endDate = '20260718T220000';
+            const title = 'Свадьба Максима и Евгении';
+            const location = BANQUET_ADDRESS;
+
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=Свадьба+Максима+и+Евгении&location=${encodeURIComponent(location)}`;
+            window.open(googleUrl, '_blank');
+        }
+
+        // Обработка формы + отправка через EmailJS
+        function handleFormSubmit() {
+            const form = document.getElementById('rsvp-form');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const guest = document.getElementById('guest-name').value.trim() || 'Гость';
+                const transfer = document.querySelector('input[name="transfer"]:checked')
+                    ? document.querySelector('input[name="transfer"]:checked').value
+                    : 'Не указано';
+                const alcohol = document.querySelector('input[name="alcohol"]:checked')
+                    ? document.querySelector('input[name="alcohol"]:checked').value
+                    : 'Не указано';
+
+                if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                    alert('✅ Тестовый режим.\n\nГость: ' + guest + '\nТрансфер: ' + transfer + '\nАлкоголь: ' + alcohol + '\n\n(Вставьте EmailJS ключи для реальной отправки)');
+                    form.reset();
+                    return;
+                }
+
+                // Инициализация EmailJS
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+
+                try {
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        guest: guest,
+                        transfer: transfer,
+                        alcohol: alcohol,
+                        date: '18 июля 2026'
+                    });
+
+                    alert('Спасибо! Ваши ответы отправлены Максиму и Евгении');
+                    form.reset();
+                } catch (err) {
+                    console.error(err);
+                    alert('Что-то пошло не так. Попробуйте ещё раз.');
+                }
+            });
+        }
+
+        // Главная инициализация
+        function init() {
+            initTailwind();
+            startCountdown();
+            personalizeGuest();
+            initYandexMap();
+            handleFormSubmit();
+
+            console.log('%Сайт-приглашение на свадьбу Максима и Евгении готов!', 'color:#4a7043; font-size:13px; font-family:monospace');
+            console.log('Персонализация: добавьте ?guest=Имя+Фамилия в ссылку');
+            console.log('Пример: https://ваш-сайт.ru/?guest=Анна+Смирнова');
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
