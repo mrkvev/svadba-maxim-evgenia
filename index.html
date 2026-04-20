@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Максим + Евгения | Приглашение на свадьбу 18.07.2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@400;700&family=Inter:wght@400;500&display=swap');
+        /* ========== Kindentosca – рукописный шрифт для имён ========== */
+        @font-face {
+            font-family: 'Kindentosca';
+            src: url('Kindentosca.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Akrobat-Regular';
+            src: url('Akrobat-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-kindentosca {
+            font-family: 'Kindentosca', 'Playfair Display', serif;
+            font-weight: normal;
+        }
+        .font-akrobat {
+            font-family: 'Akrobat-Regular', 'Playfair Display', serif;
+            font-weight: normal;
+        }
+
+        :root {
+            --grey-text-color: #848975; /* Серый */
+            --black-text-color: #3b4842; /* Черный? */
+            --dg-color-beige: #f8f9f5 /* Бежевый */
+        }
+
+        /* Стиль всего тела */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--dg-color-beige);
+            color: var(--black-text-color)
+        }
+
+        /*Добавляет плавную анимацию (0.3 секунды) для элементов таймера.
+            При изменении цифр (каждую секунду) они будут меняться плавно.*/
+        .countdown-item {
+            transition: all 0.3s ease;
+        }
+
+        .right-text {
+            text-align: right;
+        }
+        .element8 {
+            margin: auto; /*внешние отступы элемента*/
+            width: 79%; /* ширина белого фона на листиках */
+            height: 100%; /*высота*/
+            top: 7%; /*расстояние от верхнего края родителя или окна браузера*/
+            position: relative;
+            padding: 30px; /*внутренние отступы*/
+            max-width: 550px; /*макс ширина блока*/
+        }
+        
+        /* Титульная страница */
+        .window-block {
+            margin: auto; /*внешние отступы элемента*/
+            max-width: 400px; /*макс ширина блока*/
+            height: 700px;
+            position: relative;
+            background: rgb(255,255,255);
+        }
+
+        .element7 {
+            width: 100%; /*занимает всю ширину родителя*/
+            height: 100%; /*занимает всю высоту родителя*/
+            position: relative;
+            padding: 70px 0 !important;
+            min-height: 645px;
+        }
+        .block#myinv {
+            height: auto;
+        }
+        .moveBox {
+            position: relative;
+            margin: auto;
+            height: 10%; /*высота 10% от высоты родителя (родитель должен иметь явную высоту)*/
+            transition: all .5s ease-out 0s;
+        }
+        .textLine {
+            top: 0;
+            clear: both;
+            bottom: 0;
+            left: 0;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0);
+            pointer-events: none;
+            padding: 15px 0;
+        }
+  
+        .plate-box {
+            margin: auto;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /*обрезает содержимое элемента выходящее за границы его блока*/
+            background-repeat: no-repeat;
+        }
+        
+        .element_txt {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+        }
+        .texts {
+            top: 40%;
+            width:  100%;
+            height: 60%;
+            position: relative;
+        }
+        .window#mymain {
+            margin: auto;
+            height: 90vh;
+            max-height: 875px;
+        }
+        @media (max-width: 992px) {
+            .block#mymain {
+                min-height: 750px;
+            }
+        }
+        #screen .block {
+            width: 100%;
+            height: 700px;
+        }
+        .sheet, .window, [elemplace=bgback], [elemplace=bgcolor] {
+            transition: all .5s ease-out 0s;
+        }
+        .element1 {
+            margin: auto;
+            top: 10%;
+            position: relative;
+            width: 90%;
+            height: 72%;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-size: contain;
+            background-position: 50%;
+        }
+
+        .plate_box {
+            margin: auto;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-repeat: no-repeat;
+        }
+        .block {
+            max-width: 400px;
+            height: 700px;
+            margin: auto; /*внешние отступы элемента*/
+        }
+        .block2 {
+            max-width: 400px;
+            height: 700px;
+            margin: auto; /* Внешние отступы элемента */
+            background: rgb(255,255,255);
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Полупрозрачный белый слой для читаемости текста */
+        .block2 .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.88); /* регулируй прозрачность */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+        }
+
+        .block2 .content {
+            text-align: center;
+        }
+
+        /* Шапка */
+        .mymenu {
+            height: 60px; /* Высота шапки */
+            z-index: 10; /* Шапка приклеивается и не исчезает */
+            position: fixed; /* Фиксированное позиционирование */
+            background: rgba(255,255,255,0.56);
+            -webkit-backdrop-filter: blur(14px) saturate(140%); /* Эффект размытия (для Safari) */
+            backdrop-filter: blur(14px) saturate(140%); /* Эффект размытия */
+            width: 100%;
+        }
+
+        .subTextLine {
+            border: 2px solid rgba(255, 255, 255, 0);
+            overflow-wrap: normal !important;
+            word-break: normal !important;
+        }
+
+        /* Ссылка в шапке */
+        .mynav {
+            float: left; /* Выравнивает элемент влево */
+            padding: 13px; /* Внутренние отступы со всех сторон */
+            height: 60px; /* Фиксированная высота */
+            font-size: 18px;
+            text-decoration: none; /* Убирает подчеркивание ссылки */
+            letter-spacing: 0.1em; /* Расстояние между буквами увеличено на 10% */
+            color: #848975; /* Серенький цвет */
+            transition: color 0.3s ease; /* Плавное изменение цвета */
+        }
+        /* При наведении шапка светлее */
+        .mynav:hover {
+            color: #a8b29b;
+        }
+
+
+        .timer {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 440px;
+            padding: 0 15px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center; /* центрирует элементы внутри */
+            gap: 30px; /* расстояние между блоками недель/дней и т.д. */
+            text-align: center;
+        }
+
+        </style>
+</head>
+<body>
+    <!--шапка приглашения-->
+    <!--<div class="mymenu font-kindentosca" id="menu"></div>-->
+
+    <!--Первая страница приглашения-->
+    <div class="window-block" id="mymain">
+
+
+        <!--Форма для листика-->
+        <div class="plate-box">
+            <div class="element1" style="background-image: url(upl5199.png); transform:scale(1.3) rotate(315deg); left:47%; top:-5.5%;" optstyle="upl6199.png">
+            </div>
+        </div>
+
+        <!--Форма для текста-->
+        <div class="texts textBox">
+
+            <div class="textLine" style="top: 5%">
+                <div class="font-akrobat" style="font-size: 10.2774pt; line-height:1.25em; letter-spacing:0.2em; text-align:left; padding-left: 50px;">
+                    ПРИГЛАШАЕМ<br>НА НАШУ СВАДЬБУ
+                </div>
+            </div>
+            <div class="textLine" style="top: 1%">
+                <div class="font-kindentosca text-[#848975]" style="font-size: 50pt; line-height: inherit; letter-spacing: 0em; text-align: left; padding-left: 45px;">
+                    Максим
+                </div>
+            </div>
+            <div class="textLine" style="top: -20.5%">
+                <div class="font-kindentosca text-[#848975]" style=" font-size: 50pt; line-height: inherit; letter-spacing: 0em; text-align: left; padding-left: 160px;">
+                    +
+                </div>
+            </div>
+            <div class="textLine" style="top: -45%">
+                <div class="font-kindentosca text-[#848975]" style="font-size: 50pt; line-height: inherit; letter-spacing: 0em; text-align: left; padding-left: 50px;">
+                    Евгения<br>
+                </div>
+            </div>
+
+            <div class="textLine" style="top: -55%">
+                <div class="font-akrobat" style="font-size: 10.2774pt; line-height: 1.25em; letter-spacing: 0.2em; text-align: right; padding-right: 42px">
+                    18 июля<br>2026
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Таймер -->
+        <div class="timer">
+            <div class="subTextLine countdown font-akrobat" id="countdown">
+                <div class="countdown-item">
+                    <div id="weeks" class="text-4xl">13</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">недель</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="days" class="text-4xl">04</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">дней</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="hours" class="text-4xl">07</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">часов</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="minutes" class="text-4xl">46</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">минут</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="seconds" class="text-4xl">12</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">секунд</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="block" id="myinv" module="myinv" style="background-image: url(27.jpg); background-size: 214px;">
+        <!-- Второй блок — приветствие -->
+        <div class="element7" style="background-image: url(upl5206.png); background-size: 428px;">
+            <!-- element8 — листики на 3 блока -->
+            <div class="element8" style="background: rgba(255,255,255,0.95); border-radius:0px; margin-bottom: -276.3px;">
+                <div class="element5 textBox">
+
+                    <div class="moveBox" style="left: 1%; top: -15%;">
+                        <div class="textLine font-kindentosca" style="font-size: 36pt; text-align: center; line-height: 1em;">Дорогие гости!</div>
+                    </div>
+                    <div class="moveBox" style="left: 0%; top: 13%;">
+                        <div class="textLine font-akrobat" style="font-size: 10.2774pt; text-align: center; line-height: 1.25em; letter-spacing: 0.2em; margin-left: -10px; margin-right: -10px;">
+                            В нашей жизни предстоят счастливые перемены! <br><br>Мы хотим, чтобы в этот день
+                            <br>рядом с нами были самые <br>близкие и дорогие люди. <br><br>
+                            Будем рады разделить с вами <br>чудесный праздник в день <br>нашей свадьбы, которая <br>
+                            состоится
+                        </div>
+                    </div>
+                    <div class="moveBox" style="top: 30%;">
+                        <div class="textLine font-kindentosca" style="font-size: 28pt; text-align: center; line-height: 1.25em; margin-left: -10px; margin-right: -10px;">
+                            18 июля 2026
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Блок 2: Программа и место проведения -->
+    <div class="block2">
+
+
+        <!--Форма для листика горизонтального-->
+        <div class="plate-box">
+            <div class="element1" style="background-image: url(upl5199.png); transform:scale(1.3) rotate(-151deg); left:82%; top:43%;">
+            </div>
+        </div>
+        <!--Форма для листика зеркального-->
+        <div class="plate-box">
+            <div class="element1" style="background-image: url(upl5199mirr.png); transform:scale(1.3) rotate(-8deg); left:70%; top:-7%;">
+            </div>
+        </div>
+        <!-- Декоративная линия -->
+        <div class="plate-box">
+            <div class="element1" style="background-image: url(line.png); transform: scale(0.65) rotate(38deg); top:39%; right:18%">
+            </div>
+        </div>
+
+
+        <div class="content" style="position: relative">
+
+            <div class="textLine">
+                <div class="font-kindentosca" style="font-size: 20pt; text-align: left; padding-left: 30px; ">
+                    <br><br>Будем ждать вас <br>по адресу:
+                </div>
+            </div>
+
+            <div class="textLine">
+                <div class="font-akrobat" style="font-size: 10.2774pt; line-height: 1.25em; letter-spacing: 0.2em; text-align: left; padding-left: 30px;">
+                    Банкетный зал "Альянс"<br>
+                    г. Краснодар, ул. Крупской, 2<br><br>
+                </div>
+            </div>
+
+            <div class="textLine">
+                <div class="font-akrobat" style="font-size: 20pt; text-align: left; padding-left: 30px; ">
+                    16:30
+                    <div class="font-kindentosca">Сбор гостей</div>
+                    <div class="font-akrobat" style="font-size: 10.2774pt; line-height: 1.25em; letter-spacing: 0.2em;">Время общения<br>и поздравлений</div>
+                </div>
+            </div>
+
+            <div class="textLine" style="top: -50%">
+                <div class="font-akrobat" style="font-size: 20pt; text-align: left; padding-left: 140px; ">
+                    17:00
+                    <div class="font-kindentosca">Свадебный банкет</div>
+                    <div class="font-akrobat" style="font-size: 10.2774pt; line-height: 1.25em; letter-spacing: 0.2em;">Время вкусной еды,<br>танцев и развлечений</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Дата свадьбы
+        const WEDDING_DATE = new Date('2026-07-18T10:00:00+03:00');
+        // Инициализация Tailwind
+        function initTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: {
+                    extend: {}
+                }
+            }
+        }
+
+        // Таймер обратного отсчёта
+        function startCountdown() {
+            const weeksEl = document.getElementById('weeks');
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            function update() {
+                const now = new Date().getTime();
+                let diff = WEDDING_DATE.getTime() - now;
+
+                if (diff < 0) {
+                    weeksEl.textContent = '0';
+                    daysEl.textContent = '0';
+                    hoursEl.textContent = '0';
+                    minutesEl.textContent = '0';
+                    secondsEl.textContent = '0';
+                    return;
+                }
+
+                const weeks = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+                diff %= (1000 * 60 * 60 * 24 * 7);
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                diff %= (1000 * 60 * 60 * 24);
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                diff %= (1000 * 60 * 60);
+
+                const minutes = Math.floor(diff / (1000 * 60));
+                diff %= (1000 * 60);
+
+                const seconds = Math.floor(diff / 1000);
+
+                weeksEl.textContent = String(weeks).padStart(2, '0');
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+
+            setInterval(update, 1000);
+            update();
+        }
+
+        // Главная инициализация
+        function init() {
+            initTailwind();
+            startCountdown();
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
